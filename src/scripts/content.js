@@ -5,7 +5,7 @@ let contentListCache = null;
 
 export async function getContentList() {
   if (contentListCache) return contentListCache;
-  const res = await fetch("data/content.json");
+  const res = await fetch("src/data/content.json");
   contentListCache = await res.json();
   return contentListCache;
 }
@@ -17,7 +17,7 @@ export async function getArticle(slug) {
 
   if (!entry) return null;
 
-  const res = await fetch(`content/${entry.file}`);
+  const res = await fetch(`src/content/${entry.file}`);
   const markdown = await res.text();
 
   return { entry, markdown };
